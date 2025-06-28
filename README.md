@@ -5,5 +5,5 @@ Romeo's new [`typst`](https://typst.app) style files. He had to write this from 
 # Dependencies
 - Typst
 - Git
-- Romeosevka font
-- Material Symbols font
+- [Romeosevka](https://github.com/carocledc3/Romeosevka) font
+- [Material Symbols](https://github.com/google/material-design-icons/tree/master/variablefont) font
