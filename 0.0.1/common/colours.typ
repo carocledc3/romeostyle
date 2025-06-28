@@ -107,7 +107,14 @@ KEY: TX: 950 || DA: 800 || AC: 600 || LA: 400 || IT: 200 || BG: 050
   zinc: ( tx: tailwind.zinc-950, da: tailwind.zinc-800, ac: tailwind.zinc-600, la: tailwind.zinc-400, it: tailwind.zinc-300, bg: tailwind.zinc-100 ),
   gray: ( tx: tailwind.gray-950, da: tailwind.gray-800, ac: tailwind.gray-600, la: tailwind.gray-400, it: tailwind.gray-300, bg: tailwind.gray-100 ),
   slate: ( tx: tailwind.slate-950, da: tailwind.slate-800, ac: tailwind.slate-600, la: tailwind.slate-400, it: tailwind.slate-300, bg: tailwind.slate-100 ),
-  default: ( tx: rgb("#0d081c"), da: rgb("#1e1753"), ac: rgb("#2b319f"), la: rgb("#5d78d3"), it: rgb("#adc5e9"), bg: rgb("#e9f2f9") ),
+  default: (
+    tx: oklch(15.46%, 0.042, 292.59deg),
+    da: oklch(25.71%, 0.104, 281.45deg),
+    ac: oklch(38.82%, 0.174, 272.57deg),
+    la: oklch(59.53%, 0.142, 269.3deg),
+    it: oklch(81.75%, 0.057, 258.36deg),
+    bg: oklch(95.64%, 0.013, 240.95deg) ),
+
 )
 #set text(font: "Iosevka SS04", size: 10pt)
 #set page(margin: 0.25in, width: 6.5in, height: 8.5in, columns: 2)

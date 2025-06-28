@@ -1,6 +1,7 @@
 #import "common/colours.typ": palette
 #import "common/headings.typ": callHeading
 #import "common/daterenderer.typ": coloursquare
+#import "common/tables.typ": tables
 
 #let schooldoc(
   // METADATA
@@ -27,6 +28,7 @@
   heading-prefix: none,
   heading-style: "block",
   heading-scales: (1.5, 1.25, 1.125,),
+  outline-title: "Table of Contents",
   outline-columns: 1,
   bib-title: "References",
   bib-style: "ieee",
@@ -76,8 +78,8 @@
         rows: 4em/3,
         inset: (y: 0em, x: 0.5em),
         align: (horizon + right, horizon + left),
-        fill: if((calc.even(rl.number))){colsc.it.mix(colsc.bg)}else{colsc.it},
-        [#text(fill: colsc.ac)[#rl.number]], rl.body
+        fill: if((calc.even(rl.number))){colsc.bg}else{colsc.it.mix(colsc.bg)},
+        [#text(fill: colsc.ac, size: 2em/3)[#rl.number]], rl.body
       )
       )
     }
@@ -127,7 +129,6 @@
   #let pagesizes = (
     longbond: ""
   )
-
   #set page(
     fill: colsc.bg,
     width: 8.5in,
@@ -177,9 +178,9 @@
   // TABLE OF CONTENTS
   #set outline(
     indent: 1em,
+    title: outline-title,
   )
 
-  // TABLE OF CONTENTS
   #show outline: out => {
     show heading: none
     callHeading(
@@ -188,7 +189,7 @@
       none,
       palette.at(colour-scheme),
       1,
-      align(center,text(size: 1.5em, title))
+      align(center,text(size: 1.5em, outline.title))
     )
     out
   }
@@ -234,6 +235,8 @@
   // SHAPES AND STROKES
   #set square(stroke: 1pt + colsc.tx)
 
+  // TABLES all handled by common/tables.typ
+
   // DOCUMENT HEADER
   #[
     #show: align.with(center)
@@ -248,7 +251,7 @@
 ]
 
 #show: schooldoc.with(
-  colour-scheme: "orange",
+  colour-scheme: "catppuccin",
   author: "Carlos Romeo Clemente Del Castillo III",
   section: "ENGL100-CITCS-1L",
   title: "Parháirýŋge",
@@ -290,7 +293,48 @@ public class EntryPoint {
     System.out.println("Good fucking lord.")
   }
 }
+public class EntryPoint {
+  public static void main(String[] args) {
+    System.out.println("Good fucking lord.")
+  }
+}
+public class EntryPoint {
+  public static void main(String[] args) {
+    System.out.println("Good fucking lord.")
+  }
+}
+public class EntryPoint {
+  public static void main(String[] args) {
+    System.out.println("Good fucking lord.")
+  }
+}
+public class EntryPoint {
+  public static void main(String[] args) {
+    System.out.println("Good fucking lord.")
+  }
+}
+public class EntryPoint {
+  public static void main(String[] args) {
+    System.out.println("Good fucking lord.")
+  }
+}
+public class EntryPoint {
+  public static void main(String[] args) {
+    System.out.println("Good fucking lord.")
+  }
+}
 ```
 ====== There's comfort in the bottom of a swimming pool
 fdffdfdfd
 ======= I'm holding my breath for you 
+
+#tables(
+  colour-scheme: "default",
+  mode: "hv",
+  alternating: "h",
+  align: horizon+center,
+  stroke: none,
+  border: true,
+  columns: 5,
+  ..([PINGAS BLAST],)*25
+)
