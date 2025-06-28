@@ -175,6 +175,16 @@
     it.body
     )
 
+  // LISTS, ENUMS, and TERM LISTS
+  #set list(
+    marker: ("•", "‣", "▪")
+  )
+
+  #set enum(
+    full: true,
+    numbering: (..nums) => [#strong[#numbering("1.1.1.", ..nums)]],
+  )
+
   // TABLE OF CONTENTS
   #set outline(
     indent: 1em,
@@ -277,6 +287,9 @@
 1. dpsddpsd
   1. ewwewewe
     1. ewfdgrfbgetr
+
+/ PINGAS: Pingas definition
+/ PINGASEEEE: Pingas definition 2
 
 $
 x = (-b plus.minus sqrt(b^2 - 4 a c)) / (2a)
