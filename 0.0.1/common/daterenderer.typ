@@ -1,7 +1,5 @@
-#let daterender(date) = {
-
-}
-#let weekdays = ("M", "T", "W", "H", "F", "R", "S");
+#let daterender(date) = {}
+#let weekdays = ("Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun");
 #let daycolours = (
   rgb("#3574ef50"),
   rgb("#d8364d50"),
@@ -13,14 +11,15 @@
 )
 
 #let coloursquare(date, font-size) = {
-  return box(inset: (y: -1em/6), square(
-    size: font-size,
+  return box(inset: (y: -1em / 6), rect(
+    height: font-size,
+    width: 5em / 3,
     fill: daycolours.at(date.weekday() - 1),
-    radius: 1em/12,
+    radius: 1em / 12,
     stroke: none,
-    )[
-    #show: align.with(horizon+center)
-    #set text(5em/6, weight: 900)
+  )[
+    #show: align.with(horizon + center)
+    #set text(5em / 6, weight: 900)
     #weekdays.at(date.weekday() - 1)
-    ])
+  ])
 }
