@@ -7,9 +7,9 @@
   format: "1.1.1",
   prefix: none,
   body,
-  col1: palette.gray.tx,
-  col2: palette.gray.da,
-  tcol: palette.gray.bg,
+  col1: palette.grey.tx,
+  col2: palette.grey.da,
+  tcol: palette.grey.bg,
   scale: 1,
 ) = [
   #block(
@@ -33,9 +33,9 @@
   format: "1.1.1",
   prefix: none,
   body,
-  col1: palette.gray.tx,
-  col2: palette.gray.da,
-  tcol: palette.gray.bg,
+  col1: palette.grey.tx,
+  col2: palette.grey.da,
+  tcol: palette.grey.bg,
 ) = {
   parbreak()
   box(
@@ -65,9 +65,9 @@
   format: "1.1.1",
   prefix: none,
   body,
-  col1: palette.gray.tx,
-  col2: palette.gray.da,
-  tcol: palette.gray.bg,
+  col1: palette.grey.tx,
+  col2: palette.grey.da,
+  tcol: palette.grey.bg,
   rad: 12pt,
   scale: 1,
 ) = [
@@ -91,9 +91,9 @@
   prefix: none,
   body,
   rad: 12pt,
-  col1: palette.gray.tx,
-  col2: palette.gray.da,
-  tcol: palette.gray.bg,
+  col1: palette.grey.tx,
+  col2: palette.grey.da,
+  tcol: palette.grey.bg,
 ) = {
   parbreak()
   box()[
@@ -122,7 +122,7 @@
   format: "1.1.1",
   prefix: none,
   body,
-  tcol: palette.gray.tx,
+  tcol: palette.grey.tx,
   scale: 1,
 ) = [
 
@@ -147,7 +147,7 @@
   format: "1.1.1",
   prefix: none,
   body,
-  tcol: palette.gray.tx,
+  tcol: palette.grey.tx,
 ) = {
   parbreak()
   box(
@@ -177,8 +177,8 @@
   format: "1.1.1",
   prefix: none,
   body,
-  col1: palette.gray.ac,
-  tcol: palette.gray.tx,
+  col1: palette.grey.ac,
+  tcol: palette.grey.tx,
   scale: 2,
 ) = block(
   stroke: (y: 1pt + col1),

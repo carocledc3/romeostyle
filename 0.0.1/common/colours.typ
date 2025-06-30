@@ -1,7 +1,7 @@
 /*
 KEY: TX: 950 || DA: 800 || AC: 600 || LA: 400 || IT: 200 || BG: 050
 */
-#import "tailwind.typ": tailwind
+#import "basecolours.typ": *
 
 #let palette = (
   red: ( tx: tailwind.red-950, da: tailwind.red-800, ac: tailwind.red-600, la: tailwind.red-400, it: tailwind.red-200, bg: tailwind.red-50 ),
@@ -94,7 +94,7 @@ KEY: TX: 950 || DA: 800 || AC: 600 || LA: 400 || IT: 200 || BG: 050
     it: tailwind.emerald-200.mix(tailwind.stone-300),
     bg: tailwind.emerald-50.mix(tailwind.stone-100)
   ),
-  bluegray: (
+  bluegrey: (
     tx: tailwind.blue-950.mix(tailwind.stone-950),
     da: tailwind.blue-800.mix(tailwind.stone-800),
     ac: tailwind.blue-600.mix(tailwind.stone-600), 
@@ -102,26 +102,35 @@ KEY: TX: 950 || DA: 800 || AC: 600 || LA: 400 || IT: 200 || BG: 050
     it: tailwind.blue-200.mix(tailwind.stone-300),
     bg: tailwind.blue-50.mix(tailwind.stone-100)
     ),
+  plum: (
+    tx: tailwind.purple-950.mix(tailwind.stone-950),
+    da: tailwind.purple-800.mix(tailwind.stone-800),
+    ac: tailwind.purple-600.mix(tailwind.stone-600), 
+    la: tailwind.purple-400.mix(tailwind.stone-400),
+    it: tailwind.purple-200.mix(tailwind.stone-300),
+    bg: tailwind.purple-50.mix(tailwind.stone-100)
+    ),
   stone: ( tx: tailwind.stone-950, da: tailwind.stone-800, ac: tailwind.stone-600, la: tailwind.stone-400, it: tailwind.stone-300, bg: tailwind.stone-100 ),
   neutral: ( tx: tailwind.neutral-950, da: tailwind.neutral-800, ac: tailwind.neutral-600, la: tailwind.neutral-400, it: tailwind.neutral-300, bg: tailwind.neutral-100 ),
   zinc: ( tx: tailwind.zinc-950, da: tailwind.zinc-800, ac: tailwind.zinc-600, la: tailwind.zinc-400, it: tailwind.zinc-300, bg: tailwind.zinc-100 ),
-  gray: ( tx: tailwind.gray-950, da: tailwind.gray-800, ac: tailwind.gray-600, la: tailwind.gray-400, it: tailwind.gray-300, bg: tailwind.gray-100 ),
+  grey: ( tx: tailwind.gray-950, da: tailwind.gray-800, ac: tailwind.gray-600, la: tailwind.gray-400, it: tailwind.gray-300, bg: tailwind.gray-100 ),
   slate: ( tx: tailwind.slate-950, da: tailwind.slate-800, ac: tailwind.slate-600, la: tailwind.slate-400, it: tailwind.slate-300, bg: tailwind.slate-100 ),
   default: (
-    tx: oklch(15.46%, 0.042, 292.59deg),
-    da: oklch(25.71%, 0.104, 281.45deg),
-    ac: oklch(38.82%, 0.174, 272.57deg),
-    la: oklch(59.53%, 0.142, 269.3deg),
-    it: oklch(81.75%, 0.057, 258.36deg),
-    bg: oklch(95.64%, 0.013, 240.95deg) ),
+    tx: rdbp.romeo-950,
+    da: rdbp.romeo-800,
+    ac: rdbp.romeo-600,
+    la: rdbp.romeo-400,
+    it: rdbp.romeo-200,
+    bg: rdbp.romeo-50 ),
 
 )
 #set text(font: "Iosevka SS04", size: 10pt)
 #set page(margin: 0.25in, width: 6.5in, height: 8.5in, columns: 2)
 #for col in palette {
-  raw(col.at(0)); v(-0.9em)
-  for i in col.at(1).values() {  
+  block(breakable: false)[
+  #raw(col.at(0)); #v(-0.9em)
+  #for i in col.at(1).values() {  
     box(square(stroke: 0pt + black, fill:i)); 
-  }; v(-0.85em)
+  }]; v(-0.5em)
 }
 count: *#palette.len()*

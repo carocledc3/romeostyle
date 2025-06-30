@@ -243,3 +243,17 @@ slate-50: oklch(98.40%, 0.0030, 247.86deg),
   rose-950: oklch(27.10%, 0.1050, 12.09deg),
   
 )
+
+#let rdbp = (
+     romeo-50: oklch(96.32%, 0.0356, 2deg + 260.2992deg),
+    romeo-100: oklch(86.48%, 0.1030, 2deg + 263.4622deg),
+    romeo-200: oklch(79.90%, 0.1389, 2deg + 265.3525deg),
+    romeo-300: oklch(70.06%, 0.1745, 2deg + 267.2308deg),
+    romeo-400: oklch(64.34%, 0.2093, 2deg + 269.5767deg),
+    romeo-500: oklch(56.66%, 0.2121, 2deg + 271.3022deg),
+    romeo-600: oklch(49.04%, 0.1769, 2deg + 273.5376deg),
+    romeo-700: oklch(46.28%, 0.1718, 2deg + 276.1953deg),
+    romeo-800: oklch(35.69%, 0.1063, 2deg + 279.5381deg),
+    romeo-900: oklch(26.96%, 0.0714, 2deg + 283.4169deg),
+    romeo-950: oklch(19.32%, 0.0378, 2deg + 292.1620deg),
+)

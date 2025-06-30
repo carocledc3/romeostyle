@@ -1,2 +1,2 @@
-#import "schooldoc.typ": schooldoc
+#import "schooldoc.typ": *
 #import "researchpapers.typ": *

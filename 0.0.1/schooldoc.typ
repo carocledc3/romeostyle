@@ -1,8 +1,10 @@
+#import "common/callouts-examples.typ": *
 #import "common/colours.typ": palette
+#import "common/daterenderer.typ": datecoloursquare
+#import "common/icons.typ": *
 #import "common/headings.typ": callHeading
-#import "common/daterenderer.typ": coloursquare
-#import "common/tables.typ": tables
 #import "common/pagesizes.typ": pagesizes, margins
+#import "common/tables.typ": tables
 
 #let schooldoc(
   // METADATA
@@ -46,6 +48,7 @@
   }
   #let colsc = palette.at(colour-scheme)
 
+  // DATA PROCESSING
   // TEXT
   #set text(
     font: (font-family, "Romeosevka", "Iosevka SS04"),
@@ -113,7 +116,7 @@
   #let exhl(fill, body) = box(
     fill: fill,
     inset: (x: 1em / 3),
-    outset: (y: 1em / 4),
+    outset: (y: 1em / 3),
     radius: 1em / 4,
     body,
   )
@@ -145,7 +148,7 @@
       else {100% + 2 *0.5in},
         height: 0.35in, fill: gradient.linear(angle: 90deg, colsc.la, colsc.ac))[
       #set text(size: 18pt, fill: colsc.bg)
-      #text(font: "Romeosymbols", baseline: -1pt)[a]
+      #rd-icon
       #box(height: 100%, inset: (x: 0.5em, y: -0.5em))[
         #align(horizon, text(size: font-size)[
           #if (code != "") {
@@ -196,7 +199,7 @@
 
   #show outline: out => {
     show heading: none
-    callHeading(none, (text(font: "Material Symbols Sharp", "toc", size: 2em * 0.75)), none, palette.at(colour-scheme), 1, align(center, text(
+    callHeading(none, text(2em * 0.75, icon("toc")), none, palette.at(colour-scheme), 1, align(center, text(
       size: 1.5em,
       outline.title,
     )))
@@ -205,7 +208,7 @@
 
   #show outline.entry: oleg => {
     if (str(repr(oleg.inner())).contains("[" + bib-title + "]")) {
-      link(oleg.element.location(), oleg.indented(text(font: "Material Symbols Sharp", baseline: 2pt, "book") + oleg.prefix(), oleg.inner()))
+      link(oleg.element.location(), oleg.indented(text(baseline: 2pt, icon("book")) + oleg.prefix(), oleg.inner()))
     } else {
       link(oleg.element.location(), oleg.indented(heading-prefix + oleg.prefix(), oleg.inner()))
     }
@@ -228,7 +231,7 @@
       scales: heading-scales,
       style: heading-style,
       none,
-      (text(font: "Material Symbols Sharp", "book", size: 2em * 0.75)),
+      text(size: 2em * 0.75, (icon("book"))),
       none,
       palette.at(colour-scheme),
       1,
@@ -247,22 +250,45 @@
   // DOCUMENT HEADER
   #[
     #show: align.with(center)
-    #exhl(gradient.linear(angle: 90deg, colsc.da, colsc.tx))[
-      #text(fill: colsc.bg, strong(author))
-    ] \
-    *#subject* • #emph(title) \
-    #raw(code) • #date.display("[day padding:zero] [month repr:short] [year repr:full]") #coloursquare(date, font-size * 1.125)
+    #[
+      #set text(fill: colsc.bg)
+      #let authorhl = gradient.linear(angle: 90deg, colsc.da, colsc.tx)
+      #if(type(author) == array) {
+        for aut in author {
+          exhl(authorhl)[
+            #icon("person")
+            #strong[#aut]
+            #if(section != "" and flags.contains("showsection")){emph[#"- "#section]}
+            ];
+          linebreak()
+        }
+      } else {exhl(authorhl)[
+        #icon("person")
+        #strong[#author]
+        #if(section != "" and flags.contains("showsection")){emph[#"- "#section]}
+        ]; linebreak();
+      }
+    ]
+    #if(subject != ""){[#strong[#icon("school") #smallcaps[#subject]]]}
+    #if(subject != "" and title != ""){[•]}
+    #if(title != ""){[#emph[#icon("docs") #title]]}
+    #if(subject != "" or title != ""){linebreak()}
+    #if(code != ""){[#box(move(dy: 1pt, icon("code"))) #raw(code) •]}
+    #icon("calendar_clock") #date.display("[day padding:zero] [month repr:short] [year repr:full]") #datecoloursquare(date, font-size * 1.125)
     #line(length: 100%)
   ]
-
-
+  
   // DOCUMENT METADATA
+  #let document-authors = ()
+  #if(type(author) == array){
+    for aut in author {document-authors.push(aut)}
+  }else{document-authors.push(author)}
   #set document(
-    author: author,
+    author: if(type(author) == array){author.join("; ")}else{author},
     date: date,
     title: code + " - " + subject + " - " + title,
     keywords: (
-      author,
+      ..document-authors,
       code,
       subject,
       title,
@@ -271,20 +297,3 @@
 
   #body
 ]
-
-#show: schooldoc.with(
-  colour-scheme: "rose",
-  margin-mode: "sunshine",
-  author: "Carlos Romeo Clemente Del Castillo III",
-  section: "ENGL100-CITCS-1L",
-  title: "Parháirýŋge",
-  paper: "pc",
-  doc-columns: 3,
-  font-family: "Romeosevka",
-  font-size: 12pt,
-  subject: "Statistical Design and Analysis",
-  code: "30PC-TEST",
-  flags: (),
-)
-
-#lorem(480)

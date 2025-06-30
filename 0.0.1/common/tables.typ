@@ -35,7 +35,7 @@
       set text(fill: colsc.bg, weight: "bold")
       tc
     } else { tc }
-  }
+  } else { tc }
 
   let alternator(x, y) = (
     if (alternating) == "h" {
